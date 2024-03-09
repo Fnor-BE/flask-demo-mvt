@@ -1,0 +1,30 @@
+{% extends "index.html" %}
+
+{% block title %} Connexion {% endblock %}
+
+{% block content%}
+    <!-- Formulaire de connexion -->
+    <div class="content">
+        <h2>Connexion</h2>
+        <form class="my-form" method="POST">
+            {{ newLoginForm.csrf_token }}
+            <input type="text" name="email" placeholder="Adresse email" required>
+            {% if newLoginForm.email.errors %}
+            <ul class="errors-form">
+                {% for error in newLoginForm.email.errors %}
+                    <li>{{error}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            {% if newLoginForm.password.errors %}
+                <ul class="errors-form">
+                    {% for error in newLoginForm.password.errors %}
+                        <li>{{error}}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+{% endblock %}

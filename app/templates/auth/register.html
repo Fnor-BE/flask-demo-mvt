@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+
+{% block title %} Inscription {% endblock %}
+
+{% block content%}
+    <div class="content">
+        <h2>Inscription</h2>
+        <form class="my-form" method="POST">
+            {{ newRegisterForm.csrf_token }}
+            <input type="text" name="username" placeholder="Nom utilisateur" required>
+            {% if newRegisterForm.email.errors %}
+                <ul class="errors-form">
+                    {% for error in newRegisterForm.email.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <input type="email" name="email" placeholder="Adresse email" required>
+            {% if newRegisterForm.email.errors %}
+                <ul class="errors-form">
+                    {% for error in newRegisterForm.email.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <input type="password" name="password" placeholder="Mot de passe" required>
+            {% if newRegisterForm.password.errors %}
+                <ul class="errors-form">
+                    {% for error in newRegisterForm.password.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+{% endblock %}

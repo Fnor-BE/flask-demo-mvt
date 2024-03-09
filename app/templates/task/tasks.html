@@ -1,0 +1,19 @@
+{% extends "index.html" %}
+
+{% block title %} Task {% endblock %}
+
+{% block content%}
+    <h1>Tasks</h1>
+    <ul class="task-list">
+    {% for task in tasks %}
+        <li class="task-item">
+            <span>{{ task.description }}</span>
+            <a href="{{ url_for('update_task', id=task.id) }}" class="task-button task-update">Update</a>
+            <form action="{{ url_for('delete_task', id=task.id) }}" method="POST" class="task-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+                <button class="task-button task-delete" type="submit">Delete</button>
+            </form>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

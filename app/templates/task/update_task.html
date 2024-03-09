@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block title %} Update - Task {% endblock %}
+
+{% block content%}
+
+<h1>Update Task</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.description.label }}<br>
+        {{ form.description() }}
+    </p>
+    <p>
+        {{ form.user_id.label }}<br>
+        {{ form.user_id() }}
+    </p>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock %}
